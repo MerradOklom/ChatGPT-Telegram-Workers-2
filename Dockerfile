@@ -18,4 +18,3 @@ RUN chmod +x /app/create-configs.sh
 
 EXPOSE 8787
 CMD ["/bin/bash", "-c", "/app/create-configs.sh && npm run start:dist"]
-CMD ["npm", "run", "start:dist"]

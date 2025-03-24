@@ -13,5 +13,9 @@ COPY --from=DEV /app/package.json /app/
 RUN apk add --no-cache sqlite && \
     npm install --only=production --omit=dev && \
     npm cache clean --force
+COPY create-configs.sh /app/create-configs.sh
+RUN chmod +x /app/create-configs.sh
+
 EXPOSE 8787
+CMD ["/bin/bash", "-c", "/app/create-configs.sh && npm run start:dist"]
 CMD ["npm", "run", "start:dist"]

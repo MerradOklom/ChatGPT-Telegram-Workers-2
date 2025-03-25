@@ -15,6 +15,7 @@ FROM node:20-slim AS prod
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install git -y
 COPY --from=build /app/packages/apps/local/dist/index.js /app/dist/index.js
 COPY --from=build /app/packages/apps/local/package-docker.json /app/package.json
 # Copy the Bash script into the container
